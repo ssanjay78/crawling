@@ -10,5 +10,16 @@
 </head>
 <body>
     <h1>Welcome to Instant Crawler</h1>
+
+    <form  method="post">
+
+        {% csrf_token %}
+    
+        Enter an url: <input type="text" name="url"><br><br>
+        <input type="Submit"><br><br>
+        {% for message in messages %}
+        {{message}}
+        {% endfor %}
+    </form>
 </body>
 </html>
