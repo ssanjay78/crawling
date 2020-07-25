@@ -12,7 +12,7 @@ def crawler(request):
 
         find_url(url)
         messages.info(request, link_sets)
-        print()
+        
         return redirect('/')
 
     return render(request, 'crawler.html')
