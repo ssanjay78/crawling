@@ -5,21 +5,146 @@
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <title>Crawler</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
     <script src='main.js'></script>
+    
 </head>
+
+<style>
+    
+    .button{
+        background-color:#F2F2F2; color:grey; margin: 11px 4px; padding: 16px; outline-color:transparent;
+        border-radius: 12px;border:2px solid darkseagreen; width: 150px; height: 10px; cursor: pointer;
+        font-size: 20px;box-shadow: 4px 4px 4px #999;line-height: 1px;
+    }
+    .button :focus {
+        background-color: gold;
+    }
+    .input{
+        width: 450px; height:40px ; color:grey;box-shadow: 2px 2px 2px;
+        border-radius: 25px; border:2px solid lightgray; outline-color:transparent; padding: 0 30px;
+    }
+    input,
+    input::-webkit-input-placeholder {
+    font-size: 18px;
+    line-height: 2;
+    }
+
+    .progress {
+        position: relative; height: 20px; width: 50%; background-color: whitesmoke;
+        border-radius: 2px; background-clip: padding-box; overflow: hidden;
+        display: block;
+     }
+  .progress .indeterminate {
+background-color:black; }
+  .progress .indeterminate:before {
+    content: '';
+    position: absolute;
+    background-color: #2C67B1;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    will-change: left, right;
+    -webkit-animation: indeterminate 2.1s cubic-bezier(0.65, 0.815, 0.735, 0.395) infinite;
+            animation: indeterminate 2.1s cubic-bezier(0.65, 0.815, 0.735, 0.395) infinite; }
+  .progress .indeterminate:after {
+    content: '';
+    position: absolute;
+    background-color: #2C67B1;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    will-change: left, right;
+    -webkit-animation: indeterminate-short 2.1s cubic-bezier(0.165, 0.84, 0.44, 1) infinite;
+            animation: indeterminate-short 2.1s cubic-bezier(0.165, 0.84, 0.44, 1) infinite;
+    -webkit-animation-delay: 1.15s;
+            animation-delay: 1.15s; }
+
+  @-webkit-keyframes indeterminate {
+    0% {
+      left: -35%;
+      right: 100%; }
+    60% {
+      left: 100%;
+      right: -90%; }
+    100% {
+      left: 100%;
+      right: -90%; } }
+  @keyframes indeterminate {
+    0% {
+      left: -35%;
+      right: 100%; }
+    60% {
+      left: 100%;
+      right: -90%; }
+    100% {
+      left: 100%;
+      right: -90%; } }
+  @-webkit-keyframes indeterminate-short {
+    0% {
+      left: -200%;
+      right: 100%; }
+    60% {
+      left: 107%;
+      right: -8%; }
+    100% {
+      left: 107%;
+      right: -8%; } }
+  @keyframes indeterminate-short {
+    0% {
+      left: -200%;
+      right: 100%; }
+    60% {
+      left: 107%;
+      right: -8%; }
+    100% {
+      left: 107%;
+      right: -8%; } }
+
+#progressholder{
+    
+}
+
+
+    
+
+    </style>
+    <script>
+        
+        function myFunction() {
+            var x = document.getElementById('progressholder')
+            if (x.style.display == 'none') {
+              x.style.display = 'block';
+            } else {
+              x.style.display = 'none';
+            }
+          }
+
+          
+    </script>
+    
 <body>
-    <h1>Welcome to Instant Crawler</h1>
+    <center><br><br><br><br><br><br>
+    <h1 style="color:lightseagreen; font-size: 55px;">Instant Crawler</h1>
 
     <form  method="post">
-
+        
         {% csrf_token %}
-    
-        Enter an url: <input type="text" name="url"><br><br>
-        <input type="Submit"><br><br>
-        {% for message in messages %}
-        {{message}}
+        <br><br>
+        <input class="input" type="text" name="url" placeholder="Enter an URL     i.e: google.com"><br><br>
+        <button class="button" id = "searchb" onclick="myFunction()">Search URL</button>
+        <br><br>
+        {% for every in messages %}
+            <a style="color: brown; font-size: 20px;">{{every}}</a>
         {% endfor %}
-    </form>
+        <br><br>
+        <div id="progressholder" style="display: none;">
+            <div class="progress" id="PreLoaderBar">
+                <div class="indeterminate"></div>
+            </div>
+            <a>Loading please wait...</a>
+        </div>
+    </form> 
+    
+    </center>
 </body>
 </html>

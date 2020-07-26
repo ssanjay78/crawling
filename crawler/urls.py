@@ -20,4 +20,5 @@ from . import views
 urlpatterns = [
     path('',views.crawler,name='crawler'),
     path('admin/', admin.site.urls),
+    path('result/', views.result, name='result')
 ]
