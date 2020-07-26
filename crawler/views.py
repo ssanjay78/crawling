@@ -8,6 +8,7 @@ link_sets = set()
 
 def crawler(request):
     if request.method == "POST":
+        link_sets.clear()
         url1 = request.POST['url']
         url = 'https://' + str(url1)
 
