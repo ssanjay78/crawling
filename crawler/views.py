@@ -36,7 +36,7 @@ def find_url(url, url1):
                 if link.attrs['href'] not in link_sets:
                     newLink = link.attrs['href']
                     if (url1 in newLink) and ('.jpg' not in newLink) and ('#' not in newLink):
-                        if len(link_sets)==100:
+                        if len(link_sets)==60:
                             break
                         print(newLink)
                         link_sets.add(newLink)
